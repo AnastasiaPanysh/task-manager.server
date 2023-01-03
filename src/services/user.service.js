@@ -1,4 +1,4 @@
-const { getUsersDB, getUserByIdDB, updateUsersDB, deleteUserDB } = require('../repository/user.repository')
+const { getUsersDB, getUserByIdDB, updateUsersDB, deleteUserDB, patchUsersDB } = require('../repository/user.repository')
 
 async function getUsers() {
     const user = await getUsersDB()
@@ -22,6 +22,11 @@ async function deleteUser(id) {
     const user = await deleteUserDB(id)
     if (!user.length) throw new Error('not found')
     return user
-
 }
-module.exports = { getUsers, getUserById, updateUsers, deleteUser }
+
+async function patchUsers(id, dataFromClient) {
+    const user = await patchUsersDB(id, dataFromClient)
+    if (!user.length) throw new Error('not found')
+    return user
+}
+module.exports = { getUsers, getUserById, updateUsers, deleteUser, patchUsers }
