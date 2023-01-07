@@ -1,4 +1,5 @@
 const { pool } = require('../DB')
+const bcrypt = require('bcrypt')
 
 async function getUserByEmailDB(email) {
     const client = await pool.connect()
@@ -22,11 +23,12 @@ async function createUserDB(name, surname, email, pwd) {
     }
 }
 
-async function checkUserByPwdDB(pwd) {
+async function checkUserByPwdDB(pwd,email) {
     const client = await pool.connect()
-    const sql = `SELECT * FROM users WHERE pwd=$1`
-    const data = (await client.query(sql, [pwd])).rows
-    return data
+    const sql = `SELECT pwd FROM users where email = $1`
+    const data = (await client.query(sql,[email])).rows[0]
+    const validPwd = await bcrypt.compare(pwd, data.pwd);
+    return validPwd
 }
 
 module.exports = { getUserByEmailDB, createUserDB, checkUserByPwdDB }

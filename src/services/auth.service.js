@@ -14,8 +14,8 @@ async function doAuthorization(email, pwd) {
     const foundUser = await getUserByEmailDB(email)
     if (!foundUser.length) throw new Error('нет такого email')
 
-    const userPwd = await checkUserByPwdDB(pwd);
-    if (!userPwd.length) throw new Error('некорректный пароль')
+    const userPwd = await checkUserByPwdDB(pwd,email);
+    if (!userPwd) throw new Error('некорректный пароль')
 
 }
 
