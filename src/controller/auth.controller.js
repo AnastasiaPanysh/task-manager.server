@@ -6,7 +6,7 @@ const { handleError } = require('../helper/handleError')
 const route = express.Router()
 
 
-route.post('/reg', async (req, res) => {
+route.post('/reg', async function (req, res) {
     try {
         const { name, surname, email, pwd } = req.body
         await createUser(name, surname, email, pwd)
@@ -16,7 +16,7 @@ route.post('/reg', async (req, res) => {
     }
 })
 
-route.post('/auth', async (req, res) => {
+route.post('/auth', async function (req, res) {
     try {
         const { email, pwd } = req.body
         await doAuthorization(email, pwd)

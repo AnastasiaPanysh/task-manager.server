@@ -4,7 +4,7 @@ const { handleError } = require('../helper/handleError')
 const { getTasks, getTaskById, createTask, updateTask, deleteTask, patchTask } = require('../services/task.service')
 const route = express.Router()
 
-route.get('/', async (req, res) => {
+route.get('/', async function (req, res) {
     try {
         const dataTasks = await getTasks()
         buildResponse(res, 200, dataTasks)
@@ -13,7 +13,7 @@ route.get('/', async (req, res) => {
     }
 })
 
-route.get('/:id', async (req, res) => {
+route.get('/:id', async function (req, res) {
     try {
         const { id } = req.params
         const dataTask = await getTaskById(id)
@@ -23,7 +23,7 @@ route.get('/:id', async (req, res) => {
     }
 })
 
-route.post('/', async (req, res) => {
+route.post('/', async function (req, res) {
     try {
         const { task, user_id } = req.body
         const dataTask = await createTask(task, user_id)
@@ -33,7 +33,7 @@ route.post('/', async (req, res) => {
     }
 })
 
-route.put('/:id', async (req, res) => {
+route.put('/:id', async function (req, res) {
     try {
         const { id } = req.params
         const { task, user_id } = req.body
@@ -44,7 +44,7 @@ route.put('/:id', async (req, res) => {
     }
 })
 
-route.delete('/:id', async (req, res) => {
+route.delete('/:id', async function (req, res) {
     try {
         const { id } = req.params
         const dataTask = await deleteTask(id)
@@ -54,7 +54,7 @@ route.delete('/:id', async (req, res) => {
     }
 })
 
-route.patch('/:id', async (req, res) => {
+route.patch('/:id', async function (req, res) {
     try {
         const { id } = req.params
         const dataTask = await patchTask(id, req.body)
