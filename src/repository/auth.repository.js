@@ -27,7 +27,6 @@ async function checkUserByPwdDB(pwd) {
     const sql = `SELECT * FROM users WHERE pwd=$1`
     const data = (await client.query(sql, [pwd])).rows
     return data
-
 }
 
 module.exports = { getUserByEmailDB, createUserDB, checkUserByPwdDB }
