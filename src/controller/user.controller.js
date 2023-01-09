@@ -1,11 +1,5 @@
 const express = require('express');
-const {
-  getUsers,
-  getUserById,
-  updateUsers,
-  deleteUser,
-  patchUsers,
-} = require('../services/user.service');
+const { getUsers, getUserById, updateUsers, deleteUser, patchUsers } = require('../services/user.service');
 const { buildResponse } = require('../helper/buildResponse');
 const { handleError } = require('../helper/handleError');
 const { isValidUserId, isValidUser } = require('../helper/validation');

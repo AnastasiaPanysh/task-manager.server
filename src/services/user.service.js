@@ -1,10 +1,4 @@
-const {
-  getUsersDB,
-  getUserByIdDB,
-  updateUsersDB,
-  deleteUserDB,
-  patchUsersDB,
-} = require('../repository/user.repository');
+const { getUsersDB, getUserByIdDB, updateUsersDB, deleteUserDB, patchUsersDB } = require('../repository/user.repository');
 const { ExceptionType } = require('../helper/exceptions.type');
 
 async function getUsers() {
@@ -27,8 +21,7 @@ async function updateUsers(id, name, surname, email, pwd, status) {
 
 async function deleteUser(id) {
   const user = await deleteUserDB(id);
-  if (!user.length)
-    throw new Error(ExceptionType.DELETE_USER_NOT_FOUND.message);
+  if (!user.length) throw new Error(ExceptionType.DELETE_USER_NOT_FOUND.message);
   return user;
 }
 

@@ -1,14 +1,7 @@
 const express = require('express');
 const { buildResponse } = require('../helper/buildResponse');
 const { handleError } = require('../helper/handleError');
-const {
-  getTasks,
-  getTaskById,
-  createTask,
-  updateTask,
-  deleteTask,
-  patchTask,
-} = require('../services/task.service');
+const { getTasks, getTaskById, createTask, updateTask, deleteTask, patchTask } = require('../services/task.service');
 const route = express.Router();
 
 route.get('/', async function (req, res) {

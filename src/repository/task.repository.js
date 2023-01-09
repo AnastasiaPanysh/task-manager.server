@@ -74,8 +74,7 @@ async function patchTaskDB(id, dataClient) {
     const sql2 = `UPDATE tasks
         SET task=$1, user_id=$2 
         WHERE id=$3 RETURNING *`;
-    const data2 = (await client.query(sql2, [merge.task, merge.user_id, id]))
-      .rows;
+    const data2 = (await client.query(sql2, [merge.task, merge.user_id, id])).rows;
 
     await client.query('COMMIT');
     return data2;
