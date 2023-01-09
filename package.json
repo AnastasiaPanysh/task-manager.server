@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "startServer": "nodemon index",
+    "prettier": "prettier --write \"**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "nodemon": "^2.0.20",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "prettier": "^2.8.2"
   }
 }
