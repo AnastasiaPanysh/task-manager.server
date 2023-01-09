@@ -2,7 +2,7 @@ const express = require('express');
 const { getUsers, getUserById, updateUsers, deleteUser, patchUsers } = require('../services/user.service');
 const { buildResponse } = require('../helper/buildResponse');
 const { handleError } = require('../helper/handleError');
-const { isValidUserId, isValidUser } = require('../helper/validation');
+const { isValidUserId, isValidUser, isValidEmail } = require('../helper/validation');
 
 const route = express.Router();
 
@@ -25,7 +25,7 @@ route.get('/:id', isValidUserId, async function (req, res) {
   }
 });
 
-route.put('/:id', isValidUserId, isValidUser, async function (req, res) {
+route.put('/:id', isValidUserId, isValidUser,isValidEmail, async function (req, res) {
   try {
     const { id } = req.params;
     const { name, surname, email, pwd, status } = req.body;
