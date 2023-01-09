@@ -1,7 +1,7 @@
 {
   "name": "task-manager.server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Server side of the task-manager with Node.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
