@@ -4,9 +4,10 @@
   "description": "Server side of the task-manager with Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "startServer": "nodemon index",
-    "prettier": "prettier --write \"**/*.js\""
+    "prettier": "prettier --write \"**/*.js\"",
+    "testing": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,8 @@
     "nodemon": "^2.0.20",
     "pg": "^8.8.0",
     "prettier": "^2.8.2"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
   }
 }
