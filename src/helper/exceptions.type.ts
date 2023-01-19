@@ -65,4 +65,5 @@ const ExceptionType = {
   },
   AUTH_USER_WITH_PWD: { id: 17, message: 'checkUserByPwdDB: wrong password.' },
 };
-module.exports = { ExceptionType };
+
+export { ExceptionType };

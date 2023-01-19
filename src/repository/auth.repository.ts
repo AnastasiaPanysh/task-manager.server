@@ -1,13 +1,14 @@
-const { pool } = require('../DB');
+import { pool } from '../DB';
+import { iUser } from '../interfaces/interfaces';
 
-async function getUserByEmailDB(email) {
+async function getUserByEmailDB(email: string): Promise<iUser[]> {
   const client = await pool.connect();
   const sql = `SELECT * FROM users WHERE email=$1`;
   const data = (await client.query(sql, [email])).rows;
   return data;
 }
 
-async function createUserDB(name, surname, email, pwd) {
+async function createUserDB(name: string, surname: string, email: string, pwd: string): Promise<void> {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
@@ -17,16 +18,8 @@ async function createUserDB(name, surname, email, pwd) {
     await client.query('COMMIT');
   } catch (error) {
     await client.query('ROLLBACK');
-    console.log(error.message);
-    return [];
+    console.log(error);
   }
 }
 
-async function checkUserByPwdDB(pwd, email) {
-  const client = await pool.connect();
-  const sql = `SELECT pwd FROM users where email = $1`;
-  const data = (await client.query(sql, [email])).rows[0];
-  return data.pwd;
-}
-
-module.exports = { getUserByEmailDB, createUserDB, checkUserByPwdDB };
+export { getUserByEmailDB, createUserDB };
