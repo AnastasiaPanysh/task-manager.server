@@ -4,10 +4,9 @@
   "description": "Server side of the task-manager with Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "startServer": "nodemon index",
+    "nodemon": "nodemon index",
     "prettier": "prettier --write \"**/*.ts\"",
-    "testing": "jest"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -28,10 +27,12 @@
     "nodemon": "^2.0.20",
     "pg": "^8.8.0",
     "prettier": "^2.8.2",
+    "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
   },
   "devDependencies": {
+    "@types/jest": "^29.2.6",
     "jest": "^29.3.1"
   }
 }
