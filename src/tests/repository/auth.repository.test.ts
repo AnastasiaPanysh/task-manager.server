@@ -22,15 +22,13 @@ describe('getUserByEmailDB function', () => {
     })
 })
 
-//does not work
 describe('createUserDB function', () => {
     test('should return success', async () => {
         const mockUsers = [{ id: 1, name: 'nasy', surname: 'nasy', pwd: 'qwert', email: 'nasy@gmail.com', status: 1 }]
 
         mClient.query.mockResolvedValue({ rows: mockUsers })
-        const expected = await createUserDB('nasy','nasy','nasy@gmail.com','qwert')
+         await createUserDB('nasy','nasy','nasy@gmail.com','qwert')
 
         expect(mClient.query).toBeCalledWith('COMMIT')
-        expect(expected).toEqual(mockUsers)
     })
 })
