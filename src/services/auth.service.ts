@@ -14,8 +14,7 @@ async function doAuthorization(email: string, pwd: string): Promise<void> {
   const foundUser = await getUserByEmailDB(email);
   if (!foundUser.length) throw new Error(ExceptionType.AUTH_USER_WITH_EMAIL.message);
 
-  const userPwd = await getUserByEmailDB(email);
-  if (!(await bcrypt.compare(pwd, userPwd[0].pwd))) throw new Error(ExceptionType.AUTH_USER_WITH_PWD.message);
+  if (!(await bcrypt.compare(pwd, foundUser[0].pwd))) throw new Error(ExceptionType.AUTH_USER_WITH_PWD.message);
 }
 
 export { createUser, doAuthorization };

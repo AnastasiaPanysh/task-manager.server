@@ -6,7 +6,7 @@ describe('getUsers function', () => {
     test('should return success', async () => {
         const mock = jest.spyOn(repository, 'getUsersDB')
 
-        mock.mockResolvedValue([{ id: 1, name: 'nasy', surname: 'test', pwd: 'qwert', email: 'nasy@gmail.com', status: 1 }])
+        mock.mockResolvedValue([{ id: 1, name: 'nasy', surname: 'nasy', pwd: 'qwert', email: 'nasy@gmail.com', status: 1 }])
 
         await getUsers()
 
@@ -32,7 +32,7 @@ describe('getUserById function', () => {
     test('should return success', async () => {
         const mock = jest.spyOn(repository, 'getUserByIdDB')
 
-        mock.mockResolvedValue([{ id: 1, name: 'nasy', surname: 'test', pwd: 'qwert', email: 'nasy@gmail.com', status: 1 }])
+        mock.mockResolvedValue([{ id: 1, name: 'nasy', surname: 'nasy', pwd: 'qwert', email: 'nasy@gmail.com', status: 1 }])
 
         await getUserById(1)
 
